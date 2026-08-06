@@ -108,6 +108,22 @@ async def run():
 asyncio.run(run())
 ```
 
+## 4. Tests automatizados
+
+Con el entorno activado:
+
+```bash
+pytest -v
+```
+
+La suite cubre:
+
+- validación del schema Pydantic (`tests/test_schemas.py`)
+- prompt template, composición LCEL y `process_text()` con LLM mockeado (`tests/test_chain.py`)
+- factory de providers (`tests/test_factory.py`)
+
+No requieren API keys ni llamadas reales al modelo.
+
 ## Estructura
 
 ```
@@ -118,6 +134,10 @@ asyncio.run(run())
 │   └── config.py        # Provider, API keys y modelos default
 ├── model/
 │   └── factory.py       # Factory: ChatOpenAI / ChatAnthropic / ChatGoogleGenerativeAI
+├── tests/
+│   ├── test_schemas.py
+│   ├── test_chain.py
+│   └── test_factory.py
 ├── requirements.txt
 ├── .env.example
 └── consignas.md
@@ -140,3 +160,4 @@ asyncio.run(run())
 - [x] `process_text()` asíncrona con logs
 - [x] Mini-script de prueba (`main.py`)
 - [x] README con instrucciones y ejemplo JSON
+- [x] Suite de tests automatizados (`pytest`)
